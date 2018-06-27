@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { AbstractModelComponent, mixerConnector } from "react-arc";
 import { connect } from "react-redux";
 import configReactArc from "../config/reactArc";
+import CardCityComponent from "../components/CardCityComponent";
 
 class ViewWeatherContainer extends AbstractModelComponent {
   static defaultProps = {
@@ -10,12 +11,11 @@ class ViewWeatherContainer extends AbstractModelComponent {
   };
 
   render() {
-    if (this.isLoaded()) {
-      const model = this.getModel();
-      console.log(model);
-    }
-
-    return <div>hello</div>;
+    return (
+      <div>
+        {this.isLoaded() && <CardCityComponent city={this.getModel()} />}
+      </div>
+    );
   }
 }
 

@@ -6,7 +6,7 @@ import ViewWeatherContainer from "./viewWeather/containers/ViewWeatherContainer"
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container p-3">
         <ViewWeatherContainer />
       </div>
     );
