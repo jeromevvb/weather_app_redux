@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import WeatherInfoComponent from "./WeatherInfoComponent";
-
+import WeatherTempComponent from "./WeatherTempComponent";
 const style = {
   card: {
     borderRadius: "25px",
@@ -22,13 +22,11 @@ class CardCityComponent extends Component {
     const { city } = this.props;
     console.log(this.props);
 
-    const temp = Math.round(city.main.temp);
-
     return (
       <div className="card" style={style.card}>
         <div className="card-body text-center">
           <WeatherInfoComponent weather={city.weather} />
-          <h5 className="card-title">{temp}°</h5>
+          <WeatherTempComponent city={city} />
         </div>
         <div className="card-footer" style={style.cardFooter}>
           <small className="text-muted">{city.name}</small>
