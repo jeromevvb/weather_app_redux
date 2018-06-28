@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import { AbstractModelComponent, mixerConnector } from "react-arc";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import configReactArc from "../config/reactArc";
+
 import CardCityComponent from "../components/CardCityComponent";
 
-class ViewWeatherContainer extends AbstractModelComponent {
+class CityWeatherContainer extends AbstractModelComponent {
   static defaultProps = {
-    city: "Paris",
+    city: "",
     ARCConfig: configReactArc
   };
 
@@ -19,4 +21,6 @@ class ViewWeatherContainer extends AbstractModelComponent {
   }
 }
 
-export default mixerConnector(connect, configReactArc)(ViewWeatherContainer);
+export default withRouter(
+  mixerConnector(connect, configReactArc)(CityWeatherContainer)
+);
