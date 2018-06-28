@@ -9,11 +9,12 @@ class CitiesContainer extends Component {
 
   render() {
     const cityWeather = this.props.cities.map(city => {
-      return (
-        <div className="col">
-          <CityWeatherContainer city={city} />
-        </div>
-      );
+      if (city)
+        return (
+          <div className="col">
+            <CityWeatherContainer city={city} />
+          </div>
+        );
     });
 
     return (
@@ -26,7 +27,9 @@ class CitiesContainer extends Component {
 }
 
 const mapStateToProps = (store, ownProps) => {
-  return { cities: store.citiesReducer.cities };
+  return {
+    cities: store.citiesReducer.cities
+  };
 };
 
 export default connect(mapStateToProps)(CitiesContainer);

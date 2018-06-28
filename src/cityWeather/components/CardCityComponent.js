@@ -20,21 +20,31 @@ class CardCityComponent extends Component {
   };
 
   render() {
-    const { city } = this.props;
-    console.log(this.props);
+    const { model, name } = this.props;
 
     return (
-      <Link to={`/city/${city.cod}`} className="no-style">
-        <div className="card" style={style.card}>
-          <div className="card-body text-center">
-            <WeatherInfoComponent weather={city.weather} />
-            <WeatherTempComponent city={city} />
+      <div>
+        {!this.props.error && this.props.loaded ? (
+          <Link to={`/city/${model.cod}`} className="no-style">
+            <div className="card" style={style.card}>
+              <div className="card-body text-center">
+                <WeatherInfoComponent weather={model.weather} />
+                <WeatherTempComponent city={model} />
+              </div>
+              <div className="card-footer" style={style.cardFooter}>
+                <small className="text-muted">{name}</small>
+              </div>
+            </div>
+          </Link>
+        ) : (
+          <div className="card" style={style.card}>
+            <div className="card-body text-center">City not found =(</div>
+            <div className="card-footer" style={style.cardFooter}>
+              <small className="text-muted">{name}</small>
+            </div>
           </div>
-          <div className="card-footer" style={style.cardFooter}>
-            <small className="text-muted">{city.name}</small>
-          </div>
-        </div>
-      </Link>
+        )}
+      </div>
     );
   }
 }

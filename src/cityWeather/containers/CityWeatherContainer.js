@@ -14,9 +14,12 @@ class CityWeatherContainer extends AbstractModelComponent {
 
   render() {
     return (
-      <div>
-        {this.isLoaded() && <CardCityComponent city={this.getModel()} />}
-      </div>
+      <CardCityComponent
+        name={this.props.city}
+        error={this.getError()}
+        loaded={this.isLoaded()}
+        model={this.isLoaded() ? this.getModel() : null}
+      />
     );
   }
 }
