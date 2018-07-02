@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import SearchBarForm from "../components/SearchBarForm";
 import { addCity } from "../../store/actions/citiesActions";
 
@@ -15,4 +17,4 @@ class SearchBarContainer extends Component {
   }
 }
 
-export default connect()(SearchBarContainer);
+export default withRouter(connect()(SearchBarContainer));

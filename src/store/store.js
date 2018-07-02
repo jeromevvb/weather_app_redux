@@ -4,12 +4,14 @@ import thunk from "redux-thunk";
 
 import configCityWeather from "./../cityWeather/config/reactArc";
 import citiesReducer from "./reducers/citiesReducer";
+import cityWeatherDetail from "./reducers/cityWeatherDetailReducer";
 
 const middleware = applyMiddleware(thunk);
 
 const reducers = {
   viewWeather: mixerStore({ config: configCityWeather }),
-  citiesReducer: citiesReducer
+  citiesReducer: citiesReducer,
+  cityWeatherDetail: cityWeatherDetail
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

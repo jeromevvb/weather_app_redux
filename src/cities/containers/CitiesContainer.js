@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import CityWeatherContainer from "./../../cityWeather/containers/CityWeatherContainer";
 import SearchBarContainer from "../../searchBar/containers/SearchBarContainer";
@@ -32,4 +33,4 @@ const mapStateToProps = (store, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(CitiesContainer);
+export default withRouter(connect(mapStateToProps)(CitiesContainer));
