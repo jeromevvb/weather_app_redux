@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
 
 class SearchBarForm extends Component {
   constructor(props) {
@@ -19,19 +20,11 @@ class SearchBarForm extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmitForm}>
+    const { handleSubmit } = this.props;
+    return <div>
+        <form name="search" onSubmit={handleSubmit}>
           <div className="input-group mb-3">
-            <input
-              type="text"
-              name="city"
-              className="form-control"
-              placeholder="Enter your city to get the weather"
-              aria-describedby="basic-addon2"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
+            <Field type="text" component="input" name="inputSearch" className="form-control" placeholder="Enter your city to get the weather" aria-describedby="basic-addon2" />
             <div className="input-group-append">
               <button className="btn btn-outline-secondary" type="submit">
                 ADD CITY
@@ -39,9 +32,10 @@ class SearchBarForm extends Component {
             </div>
           </div>
         </form>
-      </div>
-    );
+      </div>;
   }
 }
 
-export default SearchBarForm;
+export default reduxForm({
+  form: "search"
+})(SearchBarForm);

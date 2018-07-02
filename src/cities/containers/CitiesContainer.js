@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import CityWeatherContainer from "./../../cityWeather/containers/CityWeatherContainer";
-import SearchBarContainer from "../../searchBar/containers/SearchBarContainer";
+import SearchBarContainer from "../../searchBar/SearchBarContainer";
 
 class CitiesContainer extends Component {
   static defaultProps = {};
