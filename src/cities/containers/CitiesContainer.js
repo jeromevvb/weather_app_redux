@@ -9,10 +9,10 @@ class CitiesContainer extends Component {
   static defaultProps = {};
 
   render() {
-    const cityWeather = this.props.cities.map(city => {
+    const cityWeather = this.props.cities.map((city, i) => {
       if (city)
         return (
-          <div className="col">
+          <div className="col" key={i}>
             <CityWeatherContainer city={city} />
           </div>
         );
