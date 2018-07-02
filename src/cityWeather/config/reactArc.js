@@ -6,7 +6,7 @@ const config = {
   collectionProps: [""], // path to your rest server
   paths: {
     item:
-      "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID=5fc47362925abcb0b8417e49c8cc59e0&units=metric",
+      "http://api.openweathermap.org/data/2.5/forecast?q={city}&APPID=5fc47362925abcb0b8417e49c8cc59e0&units=metric",
     collection: ""
   }
 };

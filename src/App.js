@@ -6,8 +6,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import store from "./store/store";
 
 // CONTAINERS
-import CitiesContainer from "./cities/containers/CitiesContainer";
-import CityWeatherDetailContainer from "./cityWeatherDetail/CityWeatherDetailContainer";
+import CitiesContainer from "./cities/CitiesContainer";
 // import Test from "./Test";
 
 //CSS
@@ -23,7 +22,6 @@ class App extends Component {
           <Switch>
             {/* <Route path="/test" component={Test} /> */}
             <Route exact path="/" component={CitiesContainer} />
-            <Route path="/city/:id" component={CityWeatherDetailContainer} />
             {/* NO MATCH */}
             <Route component={CitiesContainer} />
           </Switch>
