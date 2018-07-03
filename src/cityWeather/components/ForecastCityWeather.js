@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import WeatherInfoComponent from "./WeatherInfoComponent";
+import Giphy from "./Giphy";
 
 const style = {
   td: {
@@ -16,6 +17,9 @@ class ForecastCityWeather extends Component {
           <td style={style.td}>{moment(line.dt_txt).format("dddd DD MMMM")}</td>
           <td>
             <WeatherInfoComponent model={line.currentWeather} />
+          </td>
+          <td>
+            <Giphy cityName={this.props.cityName} />
           </td>
         </tr>
       );

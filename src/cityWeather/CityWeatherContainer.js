@@ -1,19 +1,12 @@
-import React from "react";
-import { AbstractModelComponent, mixerConnector } from "react-arc";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import configReactArc from "./config/reactArc";
 import moment from "moment";
 
 import CardCityComponent from "./components/CardCityComponent";
 import ForecastCityWeather from "./components/ForecastCityWeather";
 
-class CityWeatherContainer extends AbstractModelComponent {
-  static defaultProps = {
-    city: "",
-    ARCConfig: configReactArc
-  };
-
+class CityWeatherContainer extends Component {
   /**
    * @Get only weather for 12:00 everyday except today
    * this.props.data.list is an array of object who contains weather for every 3 hours for the next five days.
@@ -48,34 +41,38 @@ class CityWeatherContainer extends AbstractModelComponent {
   };
 
   render() {
-    if (this.props.fetching) {
-      return "loading...";
-    }
+    const citiesWeather = this.props.cities.map(elem => {
+      if (elem.metas.fetching) {
+        return "Loading...";
+      }
 
-    if (this.getError()) {
-      return "An unexpected error occured =(";
-    }
+      if (elem.metas.error) {
+        return "Unexpected Error";
+      }
 
-    if (!this.isLoaded()) {
-      return null;
-    }
+      return (
+        <div className="col" key={elem.data.city.id}>
+          <CardCityComponent
+            model={elem.data}
+            currentWeather={this.getCurrentWeather(elem.data.list[0])}
+          />
+          <br />
+          <ForecastCityWeather
+            model={this.getForecastWeather(elem.data)}
+            cityName={elem.name}
+          />
+        </div>
+      );
+    });
 
-    const forecastWeather = this.getForecastWeather(this.getModel());
-    const currentWeather = this.getCurrentWeather(this.getModel().list[0]);
-
-    return (
-      <div>
-        <CardCityComponent
-          model={this.getModel()}
-          currentWeather={currentWeather}
-        />
-        <br />
-        <ForecastCityWeather model={forecastWeather} />
-      </div>
-    );
+    return <div className="row">{citiesWeather}</div>;
   }
 }
 
-export default withRouter(
-  mixerConnector(connect, configReactArc)(CityWeatherContainer)
-);
+const mapStateToProps = (store, ownProps) => {
+  return {
+    cities: store.citiesWeather.cities
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(CityWeatherContainer));
