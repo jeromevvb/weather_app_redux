@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import SearchBarForm from "../components/SearchBarForm";
-import { addCity } from "../../store/actions/citiesWeather";
+import { addCity } from "../../cities/actions/index";
 
 class SearchBarContainer extends Component {
   render() {

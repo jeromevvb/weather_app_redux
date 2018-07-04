@@ -9,12 +9,16 @@ class CitiesContainer extends Component {
   static defaultProps = {};
 
   render() {
+    const cityWeatherContainer = this.props.cities.map((city, i) => {
+      return <CityWeatherContainer key={i} cityName={city} />;
+    });
+
     return (
       <div>
         <div className="container">
           <SearchBarContainer />
         </div>
-        <CityWeatherContainer />
+        {cityWeatherContainer}
       </div>
     );
   }
@@ -22,7 +26,7 @@ class CitiesContainer extends Component {
 
 const mapStateToProps = (store, ownProps) => {
   return {
-    cities: store.citiesWeather.cities
+    cities: store.cities.data
   };
 };
 

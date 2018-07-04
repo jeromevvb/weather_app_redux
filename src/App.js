@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { Router, Route, Switch } from "react-router";
 import createBrowserHistory from "history/createBrowserHistory";
 //STORE
-import store from "./store/store";
+import store from "./store";
 
 // CONTAINERS
 import CitiesContainer from "./cities/CitiesContainer";
