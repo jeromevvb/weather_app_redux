@@ -2,16 +2,17 @@ import { mixerStore } from "react-arc";
 import { applyMiddleware, createStore, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 
-import configCityWeather from "./../cityWeather/config/reactArc";
-import citiesReducer from "./reducers/citiesReducer";
-import cityWeatherDetail from "./reducers/cityWeatherDetailReducer";
+import cities from "./cities/reducers/index";
+
+import { reactArc as reactArcGiphy } from "./giphy/config";
+import { reactArc as reactArcCityWeather } from "./cityWeather/config";
 
 const middleware = applyMiddleware(thunk);
 
 const reducers = {
-  viewWeather: mixerStore({ config: configCityWeather }),
-  citiesReducer: citiesReducer,
-  cityWeatherDetail: cityWeatherDetail
+  cities: cities,
+  giphy: mixerStore({ config: reactArcGiphy }),
+  cityWeather: mixerStore({ config: reactArcCityWeather })
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

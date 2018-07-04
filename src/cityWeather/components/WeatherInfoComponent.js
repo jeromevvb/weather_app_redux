@@ -2,19 +2,17 @@ import React, { Component } from "react";
 
 class WeatherInfoComponent extends Component {
   static defaultProps = {
-    weather: []
+    model: []
   };
 
   render() {
-    const { weather } = this.props;
-
-    const currentWeather = weather[0];
-    const icon = `http://openweathermap.org/img/w/${currentWeather.icon}.png`;
+    const { model } = this.props;
 
     return (
       <div className="text-center">
-        <img width="100" src={icon} /> <br />
-        <p className="text-uppercase">{currentWeather.description}</p>
+        <img src={model.icon} /> <br />
+        <p className="text-uppercase">{model.description}</p>
+        <h5 className="card-title">{model.temp}°</h5>
       </div>
     );
   }
