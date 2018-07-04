@@ -5,11 +5,13 @@ import thunk from "redux-thunk";
 import citiesWeather from "./reducers/citiesWeather";
 import giphy from "./reducers/giphy";
 
+import { reactArc } from "./../giphy/config";
+
 const middleware = applyMiddleware(thunk);
 
 const reducers = {
   citiesWeather: citiesWeather,
-  giphy: giphy
+  giphy: mixerStore({ config: reactArc })
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import WeatherInfoComponent from "./WeatherInfoComponent";
-import Giphy from "./Giphy";
+import Giphy from "../../giphy/components/Giphy";
 
 const style = {
   td: {
